@@ -30,7 +30,7 @@ export default function Home() {
           className="bg-gradient-to-br from-emerald-700 to-teal-900 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm md:text-7xl md:leading-[5rem]"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
-          <Balancer>Bienvenido a un hogar para descansar.</Balancer>
+          <Balancer>Presentamos un lugar para descansar.</Balancer>
         </motion.h1>
         <motion.p
           className="mt-6 text-center text-gray-500 md:text-xl"
@@ -52,12 +52,54 @@ export default function Home() {
           </a>
         </motion.div>
       </motion.div>
-      <motion.h1
-        className=" mt-10 text-center font-display text-2xl font-bold text-emerald-800 drop-shadow-sm md:text-4xl"
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
+      {/* Servicios */}
+      <motion.div
+        className="max-w-2xl px-5 xl:px-0"
+        initial="hidden"
+        whileInView="show"
+        animate="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
       >
-        <Balancer>Nuestros Servicios.</Balancer>
-      </motion.h1>
+        <motion.h3
+          className=" mt-10 text-center font-display text-2xl font-bold text-emerald-800 drop-shadow-sm md:text-4xl"
+          variants={FADE_DOWN_ANIMATION_VARIANTS}
+        >
+          <Balancer>Nuestros Servicios.</Balancer>
+        </motion.h3>
+      </motion.div>
+
+      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+        {services.map(({ title, description, demo, large }) => (
+          <Card
+            key={title}
+            title={title}
+            description={description}
+            demo={demo}
+            large={large}
+          />
+        ))}
+      </div>
+
+      {/* Galeria de fotos */}
+
+      {/* Estadisticas */}
+
+      {/* Historia */}
+
+      {/* Preguntas Frequentes */}
+
+      {/* Donaciones */}
+
+      {/* Contacto */}
+
       {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         <Card
@@ -94,3 +136,24 @@ export default function Home() {
     </Layout>
   );
 }
+
+const services = [
+  {
+    title: "Refugio",
+    description:
+      "Descanso para los padres que cuidan a sus hijos en tratamiento en el Hospital Bloom.",
+    large: false,
+  },
+  {
+    title: "Cuidado",
+    description:
+      "Espacios de aseo personal, áreas de esparcimiento y aula lúdica para niños.",
+    demo: <WebVitals />,
+  },
+  {
+    title: "Fortaleza",
+    description:
+      "Compartimos esperanza, que Dios les ama, esta con ellos y viene por segunda vez.",
+    demo: <WebVitals />,
+  },
+];
