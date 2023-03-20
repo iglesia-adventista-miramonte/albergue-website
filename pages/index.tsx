@@ -1,12 +1,10 @@
 import Card from "@/components/home/card";
+import ShortCard from "@/components/home/short-card";
+import ImageCard from "@/components/home/image-card";
 import Layout from "@/components/layout";
 import Balancer from "react-wrap-balancer";
 import { motion } from "framer-motion";
 import { DONATION_URL, FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
-import { Github, Twitter } from "@/components/shared/icons";
-import WebVitals from "@/components/home/web-vitals";
-import ComponentGrid from "@/components/home/component-grid";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -30,7 +28,7 @@ export default function Home() {
           className="bg-gradient-to-br from-emerald-700 to-teal-900 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm md:text-7xl md:leading-[5rem]"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
-          <Balancer>Presentamos un lugar para descansar.</Balancer>
+          <Balancer>Un lugar para descansar.</Balancer>
         </motion.h1>
         <motion.p
           className="mt-6 text-center text-gray-500 md:text-xl"
@@ -77,19 +75,44 @@ export default function Home() {
       </motion.div>
 
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {services.map(({ title, description, demo, large }) => (
-          <Card
+        {services.map(({ title, description, icon }) => (
+          <ShortCard
             key={title}
             title={title}
             description={description}
-            demo={demo}
-            large={large}
+            icon={icon}
           />
         ))}
       </div>
 
       {/* Galeria de fotos */}
-
+      <motion.div
+        className="max-w-2xl px-5 xl:px-0"
+        initial="hidden"
+        whileInView="show"
+        animate="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
+      >
+        <motion.h3
+          className=" mt-10 text-center font-display text-2xl font-bold text-emerald-800 drop-shadow-sm md:text-4xl"
+          variants={FADE_DOWN_ANIMATION_VARIANTS}
+        >
+          ¿Cómo es el albergue?
+        </motion.h3>
+      </motion.div>
+      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-4 xl:px-0">
+        {gallery.map(({ src, description }) => (
+          <ImageCard key={src} src={src} description={description} />
+        ))}
+      </div>
       {/* Estadisticas */}
 
       {/* Historia */}
@@ -143,17 +166,31 @@ const services = [
     description:
       "Descanso para los padres que cuidan a sus hijos en tratamiento en el Hospital Bloom.",
     large: false,
+    icon: "",
   },
   {
     title: "Cuidado",
     description:
       "Espacios de aseo personal, áreas de esparcimiento y aula lúdica para niños.",
-    demo: <WebVitals />,
   },
   {
     title: "Fortaleza",
     description:
       "Compartimos esperanza, que Dios les ama, esta con ellos y viene por segunda vez.",
-    demo: <WebVitals />,
   },
+];
+
+const gallery = [
+  { src: "/gallery/1.jpg", description: "" },
+  { src: "/gallery/2.jpeg", description: "" },
+  { src: "/gallery/3.jpg", description: "" },
+  { src: "/gallery/4.jpg", description: "" },
+  { src: "/gallery/5.jpg", description: "" },
+  { src: "/gallery/6.jpg", description: "" },
+  { src: "/gallery/7.jpg", description: "" },
+  { src: "/gallery/8.jpg", description: "" },
+  { src: "/gallery/9.jpg", description: "" },
+  { src: "/gallery/10.jpg", description: "" },
+  { src: "/gallery/11.jpg", description: "" },
+  { src: "/gallery/12.jpg", description: "" },
 ];
