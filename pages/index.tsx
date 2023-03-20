@@ -5,6 +5,8 @@ import Layout from "@/components/layout";
 import Balancer from "react-wrap-balancer";
 import { motion } from "framer-motion";
 import { DONATION_URL, FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
+import CountUp from "react-countup";
+import WebVitals from "@/components/home/web-vitals";
 
 export default function Home() {
   return (
@@ -114,6 +116,28 @@ export default function Home() {
         ))}
       </div>
       {/* Estadisticas */}
+      <motion.div
+        className="max-w-2xl px-5 xl:px-0"
+        initial="hidden"
+        whileInView="show"
+        animate="show"
+        viewport={{ once: true }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
+      >
+        <motion.h3
+          className=" mt-10 text-center font-display text-2xl font-bold text-emerald-800 drop-shadow-sm md:text-4xl"
+          variants={FADE_DOWN_ANIMATION_VARIANTS}
+        >
+          Estadísticas 2022
+        </motion.h3>
+      </motion.div>
 
       {/* Historia */}
 
@@ -125,36 +149,14 @@ export default function Home() {
 
       {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        <Card
-          title="Albergados"
-          description="Padres y niños que se quedan durante la noche a dormir en el albergue"
-          demo
-        ></Card>
-        <Card
-          title="Pasantes"
-          description="Padres y niños que permanecen durante el dia en el albergue"
-          demo
-        ></Card>
-        <Card
-          title="Alimentos servidos"
-          description="Suma de desayunos, almuerzos y cenas servidos a albergados y pasantes"
-          demo
-        ></Card>
-        <Card
-          title="Lavanderia"
-          description="Numero de veces que se presta el servicio de lavanderia en el albergue"
-          demo
-        ></Card>
-        <Card
-          title="Baño"
-          description="Numero de veces que se presta el servicio de ducha en el albergue"
-          demo
-        ></Card>
-        <Card
-          title="Descanso"
-          description="Padres y niños que toman una siesta durante el dia en albergue"
-          demo
-        ></Card>
+        {statistics.map(({ title, description, demo }) => (
+          <Card
+            key={title}
+            title={title}
+            description={description}
+            demo={demo}
+          />
+        ))}
       </div>
     </Layout>
   );
@@ -193,4 +195,42 @@ const gallery = [
   { src: "/gallery/10.jpg", description: "" },
   { src: "/gallery/11.jpg", description: "" },
   { src: "/gallery/12.jpg", description: "" },
+];
+
+const statistics = [
+  {
+    title: "Albergados",
+    description:
+      "Padres y niños que se quedan durante la noche a dormir en el albergue",
+    demo: "2000",
+  },
+  {
+    title: "Pasantes",
+    description: "Padres y niños que permanecen durante el dia en el albergue",
+    demo: <CountUp end={100} />,
+  },
+  {
+    title: "Alimentos servidos",
+    description:
+      "Suma de desayunos, almuerzos y cenas servidos a albergados y pasantes",
+    demo: <CountUp end={100} />,
+  },
+  {
+    title: "Lavanderia",
+    description:
+      "Numero de veces que se presta el servicio de lavanderia en el albergue",
+    demo: <CountUp end={100} />,
+  },
+  {
+    title: "Duchas",
+    description:
+      "Numero de veces que se presta el servicio de ducha en el albergue",
+    demo: <CountUp end={100} />,
+  },
+  {
+    title: "Descanso",
+    description:
+      "Padres y niños que toman una siesta durante el dia en albergue",
+    demo: 100,
+  },
 ];
