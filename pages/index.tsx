@@ -6,6 +6,7 @@ import Balancer from "react-wrap-balancer";
 import { motion } from "framer-motion";
 import { DONATION_URL, FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import CountUp from "react-countup";
+import StatsNumber from "@/components/shared/stats-number";
 import WebVitals from "@/components/home/web-vitals";
 
 export default function Home() {
@@ -115,6 +116,7 @@ export default function Home() {
           <ImageCard key={src} src={src} description={description} />
         ))}
       </div>
+
       {/* Estadisticas */}
       <motion.div
         className="max-w-2xl px-5 xl:px-0"
@@ -138,16 +140,6 @@ export default function Home() {
           Estadísticas 2022
         </motion.h3>
       </motion.div>
-
-      {/* Historia */}
-
-      {/* Preguntas Frequentes */}
-
-      {/* Donaciones */}
-
-      {/* Contacto */}
-
-      {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         {statistics.map(({ title, description, demo }) => (
           <Card
@@ -158,6 +150,15 @@ export default function Home() {
           />
         ))}
       </div>
+      {/* Historia */}
+
+      {/* Preguntas Frequentes */}
+
+      {/* Donaciones */}
+
+      {/* Contacto */}
+
+      {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
     </Layout>
   );
 }
@@ -202,35 +203,35 @@ const statistics = [
     title: "Albergados",
     description:
       "Padres y niños que se quedan durante la noche a dormir en el albergue",
-    demo: "2000",
+    demo: <StatsNumber number="1,234" />,
   },
   {
     title: "Pasantes",
     description: "Padres y niños que permanecen durante el dia en el albergue",
-    demo: <CountUp end={100} />,
+    demo: <StatsNumber number="1,967" />,
   },
   {
     title: "Alimentos servidos",
     description:
       "Suma de desayunos, almuerzos y cenas servidos a albergados y pasantes",
-    demo: <CountUp end={100} />,
+    demo: <StatsNumber number="8,583" />,
   },
   {
     title: "Lavanderia",
     description:
       "Numero de veces que se presta el servicio de lavanderia en el albergue",
-    demo: <CountUp end={100} />,
+    demo: <StatsNumber number="1,464" />,
   },
   {
     title: "Duchas",
     description:
       "Numero de veces que se presta el servicio de ducha en el albergue",
-    demo: <CountUp end={100} />,
+    demo: <StatsNumber number="4,597" />,
   },
   {
-    title: "Descanso",
+    title: "Descansos",
     description:
       "Padres y niños que toman una siesta durante el dia en albergue",
-    demo: 100,
+    demo: <StatsNumber number="3,242" />,
   },
 ];
