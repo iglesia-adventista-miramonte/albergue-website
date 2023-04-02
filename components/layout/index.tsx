@@ -36,7 +36,7 @@ export default function Layout({
             : "bg-white/0"
         } z-30 transition-all`}
       >
-        <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between py-10 xl:mx-auto">
+        <div className=" mx-5 flex h-16 max-w-screen-xl items-center justify-between space-x-20 py-10 xl:mx-auto">
           <Link href="/" className="flex items-center font-display text-2xl">
             <Image
               src="/logo.png"
@@ -46,7 +46,7 @@ export default function Layout({
               className="mr-2"
             ></Image>
           </Link>
-          <div>
+          {/* <div>
             <AnimatePresence>
               {!session && status !== "loading" ? (
                 <motion.button
@@ -60,24 +60,18 @@ export default function Layout({
                 <UserDropdown />
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
+          <a href="#servicios">Servicios</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#estadisticas">Estadisticas</a>
+          <a href="#historia">Historia</a>
         </div>
       </div>
       <main className="flex w-full flex-col items-center justify-center py-32">
         {children}
       </main>
       <div className="absolute w-full border-t border-gray-200 bg-white py-5 text-center">
-        <p className="text-gray-500">
-          Template by{" "}
-          <a
-            className="font-medium text-gray-800 underline transition-colors"
-            href="https://twitter.com/steventey"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Steven Tey
-          </a>
-        </p>
+        <p className="text-gray-500">Albergue Adventista 2023</p>
       </div>
     </>
   );
