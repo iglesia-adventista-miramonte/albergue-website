@@ -28,7 +28,7 @@ export default function Layout({
     <>
       <Meta {...meta} />
       <SignInModal />
-      <div className="fixed h-screen w-full bg-gradient-to-br from-emerald-50 via-white to-yellow-100" />
+      <div className="fixed -z-10 h-screen w-full bg-gradient-to-br from-emerald-50 via-white to-yellow-100" />
       <div
         className={`fixed top-0 w-full ${
           scrolled
