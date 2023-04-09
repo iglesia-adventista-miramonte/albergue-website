@@ -214,7 +214,10 @@ export default function Home() {
       </motion.h3>
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         {noticias.map(({ title, href, src }) => (
-          <div className="relative h-64 overflow-hidden rounded-xl bg-white shadow-md">
+          <div
+            key={href}
+            className="relative h-64 overflow-hidden rounded-xl bg-white shadow-md"
+          >
             <a
               href={href}
               className="hover: absolute bottom-3 left-0 right-0 z-10 mx-3 
@@ -222,13 +225,7 @@ export default function Home() {
             >
               {title}
             </a>
-            <Image
-              key={src}
-              alt={title}
-              src={src}
-              fill
-              style={{ objectFit: "cover" }}
-            />
+            <Image alt={title} src={src} fill style={{ objectFit: "cover" }} />
             {/* <a href={href}>{title}</a> */}
           </div>
         ))}
