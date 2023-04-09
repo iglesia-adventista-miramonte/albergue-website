@@ -8,6 +8,7 @@ import { DONATION_URL, FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import CountUp from "react-countup";
 import StatsNumber from "@/components/shared/stats-number";
 import WebVitals from "@/components/home/web-vitals";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -203,6 +204,36 @@ export default function Home() {
           <ImageCard key={src} src={src} description={description} />
         ))}
       </div>
+
+      {/* Noticias */}
+      <motion.h3
+        className=" mt-10 text-center font-display text-2xl font-bold text-emerald-800 drop-shadow-sm md:text-4xl"
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+      >
+        Noticias
+      </motion.h3>
+      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+        {noticias.map(({ title, href, src }) => (
+          <div className="relative h-64 overflow-hidden rounded-xl bg-white shadow-md">
+            <a
+              href={href}
+              className="hover: absolute bottom-3 left-0 right-0 z-10 mx-3 
+              rounded-xl bg-emerald-800 py-4 text-center text-lg font-bold text-white shadow-md transition-all hover:mx-2 hover:bg-emerald-700 hover:shadow-xl"
+            >
+              {title}
+            </a>
+            <Image
+              key={src}
+              alt={title}
+              src={src}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+            {/* <a href={href}>{title}</a> */}
+          </div>
+        ))}
+      </div>
+
       {/* Preguntas Frequentes */}
       {/* Donaciones */}
       {/* Contacto */}
@@ -210,6 +241,24 @@ export default function Home() {
     </Layout>
   );
 }
+
+const noticias = [
+  {
+    title: "Noticias 4 Visión",
+    href: "https://www.youtube.com/watch?v=3dLIGsrsJjo&ab_channel=Noticias4VisionTCS",
+    src: "/noticias/4vision.png",
+  },
+  {
+    title: "Canal 21",
+    href: "https://www.youtube.com/watch?v=oFX0Z6FTG50&ab_channel=C%C3%B3digo21GMV",
+    src: "/noticias/codigo21.png",
+  },
+  {
+    title: "El diario de hoy",
+    href: "https://www.elsalvador.com/noticias/nacional/cancer-ninos-hospital-bloom-albergues-san-salvador-/1048092/2023/",
+    src: "/noticias/edh.png",
+  },
+];
 
 const services = [
   {
