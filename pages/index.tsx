@@ -168,13 +168,13 @@ export default function Home() {
           Nuestra Historia
         </motion.h3>
       </motion.div>
-      <motion.div className=" max-w-5xl">
-        <motion.p className=" mt-10 text-justify text-xl text-gray-800 drop-shadow-sm">
+      <motion.div className=" max-w-md md:max-w-2xl lg:max-w-5xl">
+        <motion.p className=" mt-10 text-justify text-gray-800 drop-shadow-sm md:text-xl">
           El Hospital Nacional de Niños Benjamín Bloom en El Salvador, es el
           único hospital publico especializado en atención pediátrica y atiende
           a familias con pocos recursos en El Salvador.
         </motion.p>
-        <motion.p className=" mt-10 text-justify text-xl text-gray-800 drop-shadow-sm">
+        <motion.p className=" mt-10 text-justify text-gray-800 drop-shadow-sm md:text-xl">
           Los parientes de los niños que se encuentran en el hospital enfrentan
           la difícil tarea de pasar las noches frías y desfavorables afuera del
           hospital. Los familiares esperan, en ocasiones, entre los pasillos o
@@ -184,14 +184,14 @@ export default function Home() {
           departamentos del país, sino también las personas de países vecinos,
           como Guatemala y Honduras, que acuden a este hospital.
         </motion.p>
-        <motion.p className=" mt-10 text-justify text-xl text-gray-800 drop-shadow-sm">
+        <motion.p className=" mt-10 text-justify text-gray-800 drop-shadow-sm md:text-xl">
           Con el fin de resolver esta problemática, el 28 de octubre de 2016, un
           grupo de familias que pertenecen a la Iglesia Adventista del Séptimo
           Día de la colonia Miramonte tomó la iniciativa de crear un albergue,
           luego de recibir como donación una casa por parte de una familia muy
           especial.
         </motion.p>
-        <motion.p className=" mt-10 text-justify text-xl text-gray-800 drop-shadow-sm">
+        <motion.p className=" mt-10 text-justify text-gray-800 drop-shadow-sm md:text-xl">
           En 2016 inició la planificacion del proyecto, en 2017 iniciaron las
           obras de remodelacion y en Agosto de 2018 inicia el funcionamiento del
           albergue, para dar alivio a los padres y niños en tratamientos y con
@@ -199,7 +199,7 @@ export default function Home() {
           necesidad.
         </motion.p>
       </motion.div>
-      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-4 xl:px-0">
+      <div className=" my-16 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-4 xl:px-0">
         {historic.map(({ src, description }) => (
           <ImageCard key={src} src={src} description={description} />
         ))}
